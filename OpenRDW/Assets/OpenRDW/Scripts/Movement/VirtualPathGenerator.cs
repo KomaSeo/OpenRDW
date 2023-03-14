@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class VirtualPathGenerator
 {
 
-    public static int RANDOM_SEED = 3041;
+    public static int RANDOM_SEED { get {return System.DateTime.Now.Millisecond; } set { RANDOM_SEED = value; } }
     
     public static Vector2 defaultStartPoint = Vector2.zero;
 
