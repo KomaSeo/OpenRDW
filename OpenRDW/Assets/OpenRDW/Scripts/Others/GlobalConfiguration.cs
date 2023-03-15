@@ -311,12 +311,12 @@ public class GlobalConfiguration : MonoBehaviour
     #endregion              
        
     private void Awake()
-    {        
+    {
         startTimeOfProgram = Utilities.GetTimeString();
         statisticsLogger = GetComponent<StatisticsLogger>();
 
         userInterfaceManager = GetComponent<UserInterfaceManager>();
-        cameraVirtualTopForAllAvatars = transform.Find("Virtual Top View Cam For All Avatars").GetComponent<Camera>();                
+        cameraVirtualTopForAllAvatars = transform.Find("Virtual Top View Cam For All Avatars").GetComponent<Camera>();
         virtualWorld = transform.Find("Virtual World").gameObject;
 
         if (movementController == MovementController.AutoPilot)
@@ -326,26 +326,51 @@ public class GlobalConfiguration : MonoBehaviour
                 useSimulationTime = true;
             }
         }
-        else {
+        else
+        {
             useSimulationTime = false;
             runInBackstage = false;
-        }            
+        }
 
         Initialize();
 
         // Initialization
         experimentIterator = 0;
         trialsForCurrentExperiment = trialsForRepeating;
-        
+
+        GeneratePaths();
+
+        firstPersonViewOldChoice = firstPersonView;
+        virtualWorldVisibleOldChoice = virtualWorldVisible;
+        trackingSpaceVisibleOldChoice = trackingSpaceVisible;
+        bufferVisibleOldChoice = bufferVisible;
+
+        if (exportVideo && runInBackstage)
+        {
+            Debug.LogError("video can not be exported when running in backstage");
+            exportVideo = false;
+        }
+
+        //networking
+        networkManager = GetComponentInChildren<NetworkManager>(true);
+        networkManager.gameObject.SetActive(networkingMode);
+        if (networkingMode)
+        {
+            avatarNum = 1;
+        }
+    }
+
+    private void GeneratePaths()
+    {
         //pre-defined procedurally generated paths, ensure the same in every trial
         float sumOfDistances, sumOfRotations;
         pathSeedChoiceToWaypoints = new Dictionary<PathSeedChoice, List<Vector2>>();
-        pathSeedChoiceToWaypoints[PathSeedChoice._90Turn] = VirtualPathGenerator.GenerateInitialPathByPathSeed(PathSeed.GetPathSeed90Turn(),generatedPathLength, out sumOfDistances, out sumOfRotations);
-        pathSeedChoiceToWaypoints[PathSeedChoice.RandomTurn] = VirtualPathGenerator.GenerateInitialPathByPathSeed(PathSeed.GetPathSeedRandomTurn(), generatedPathLength, out sumOfDistances, out sumOfRotations);        
+        pathSeedChoiceToWaypoints[PathSeedChoice._90Turn] = VirtualPathGenerator.GenerateInitialPathByPathSeed(PathSeed.GetPathSeed90Turn(), generatedPathLength, out sumOfDistances, out sumOfRotations);
+        pathSeedChoiceToWaypoints[PathSeedChoice.RandomTurn] = VirtualPathGenerator.GenerateInitialPathByPathSeed(PathSeed.GetPathSeedRandomTurn(), generatedPathLength, out sumOfDistances, out sumOfRotations);
         pathSeedChoiceToWaypoints[PathSeedChoice.StraightLine] = VirtualPathGenerator.GenerateInitialPathByPathSeed(PathSeed.GetPathSeedStraightLine(), generatedPathLength, out sumOfDistances, out sumOfRotations);
         pathSeedChoiceToWaypoints[PathSeedChoice.Sawtooth] = VirtualPathGenerator.GenerateInitialPathByPathSeed(PathSeed.GetPathSeedSawtooth(), generatedPathLength, out sumOfDistances, out sumOfRotations);
         pathSeedChoiceToWaypoints[PathSeedChoice.Circle] = VirtualPathGenerator.GenerateCirclePath(pathCircleRadius, pathCircleWaypointNum, out sumOfDistances, out sumOfRotations);
-        pathSeedChoiceToWaypoints[PathSeedChoice.FigureEight] = VirtualPathGenerator.GenerateCirclePath(pathCircleRadius / 2, pathCircleWaypointNum, out sumOfDistances, out sumOfRotations, true);        
+        pathSeedChoiceToWaypoints[PathSeedChoice.FigureEight] = VirtualPathGenerator.GenerateCirclePath(pathCircleRadius / 2, pathCircleWaypointNum, out sumOfDistances, out sumOfRotations, true);
 
         foreach (var ps in (PathSeedChoice[])System.Enum.GetValues(typeof(PathSeedChoice)))
         {
@@ -354,25 +379,8 @@ public class GlobalConfiguration : MonoBehaviour
                 pathSeedChoiceToWaypoints[ps] = RandomRotateWaypoints(pathSeedChoiceToWaypoints[ps]);
             }
         }
-
-        firstPersonViewOldChoice = firstPersonView;
-        virtualWorldVisibleOldChoice = virtualWorldVisible;
-        trackingSpaceVisibleOldChoice = trackingSpaceVisible;
-        bufferVisibleOldChoice = bufferVisible;
-
-        if (exportVideo && runInBackstage) {
-            Debug.LogError("video can not be exported when running in backstage");
-            exportVideo = false;
-        }
-
-        //networking
-        networkManager = GetComponentInChildren<NetworkManager>(true);        
-        networkManager.gameObject.SetActive(networkingMode);
-        if (networkingMode)
-        {
-            avatarNum = 1;            
-        }
     }
+
     public List<Vector2> RotateWaypoints(List<Vector2> waypoints,float angle)
     {
         var rot = angle;
@@ -909,6 +917,11 @@ public class GlobalConfiguration : MonoBehaviour
     }
     public void GenerateWaypoints(PathSeedChoice pathSeedChoice, string waypointsFilePath,string samplingIntervalsFilePath,out List<Vector2> waypoints, out List<float> samplingIntervals)
     {
+        if(pathSeedChoice == PathSeedChoice.RandomTurn)
+        {
+            InitRandomState();
+            GeneratePaths();
+        }// trial마다 다른 path generate하기 위한 임시 조치
         if (pathSeedChoice == PathSeedChoice.FilePath)
         {
             waypoints = LoadWaypointsFromFile(waypointsFilePath);
@@ -1021,7 +1034,6 @@ public class GlobalConfiguration : MonoBehaviour
     {        
         Debug.Log(string.Format("---------- EXPERIMENT STARTED ----------"));        
         Debug.Log(string.Format("trial:{0}/{1}, cmd file:{2}/{3}", experimentIterator + 1, experimentSetups.Count, experimentSetupsListIterator + 1, experimentSetupsList.Count));
-
         //get current experimentSetup
         ExperimentSetup setup = experimentSetups[experimentIterator];
 
