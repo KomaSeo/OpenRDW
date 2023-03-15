@@ -8,7 +8,7 @@ using System.IO;
 //Store common parameters 
 public class GlobalConfiguration : MonoBehaviour
 {
-    public const float generatedPathLength = 100f;//procedurally generated path length    
+    public const float generatedPathLength = 200f;//procedurally generated path length    
 
     private static readonly float pathCircleRadius = generatedPathLength / 2 / Mathf.PI;
     private static readonly int pathCircleWaypointNum = 20;
@@ -917,11 +917,8 @@ public class GlobalConfiguration : MonoBehaviour
     }
     public void GenerateWaypoints(PathSeedChoice pathSeedChoice, string waypointsFilePath,string samplingIntervalsFilePath,out List<Vector2> waypoints, out List<float> samplingIntervals)
     {
-        if(pathSeedChoice == PathSeedChoice.RandomTurn)
-        {
-            InitRandomState();
-            GeneratePaths();
-        }// trial마다 다른 path generate하기 위한 임시 조치
+        InitRandomState();
+        GeneratePaths();// trial마다 다른 path generate하기 위한 임시 조치
         if (pathSeedChoice == PathSeedChoice.FilePath)
         {
             waypoints = LoadWaypointsFromFile(waypointsFilePath);
