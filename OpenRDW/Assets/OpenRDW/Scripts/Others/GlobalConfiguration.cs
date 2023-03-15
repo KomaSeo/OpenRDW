@@ -8,7 +8,7 @@ using System.IO;
 //Store common parameters 
 public class GlobalConfiguration : MonoBehaviour
 {
-    public const float generatedPathLength = 400;//procedurally generated path length    
+    public const float generatedPathLength = 100f;//procedurally generated path length    
 
     private static readonly float pathCircleRadius = generatedPathLength / 2 / Mathf.PI;
     private static readonly int pathCircleWaypointNum = 20;
