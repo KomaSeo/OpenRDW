@@ -1,0 +1,159 @@
+trackingSpaceChoice = FilePath
+trackingSpaceFilePath = ./TrackingSpace/SquareWithObstacle.txt
+squareWidth = 10
+newUser
+redirector = DynamicAPF
+resetter = APF
+pathseedChoice = RandomTurn
+max_trans_gain = 0
+min_trans_gain = 0
+max_rot_gain = 0
+min_rot_gain = 0
+curvature_radius = 6.3170314843499749067570787314607
+newUser
+newUser
+end
+
+trackingSpaceChoice = FilePath
+trackingSpaceFilePath = ./TrackingSpace/SquareWithObstacle.txt
+squareWidth = 10
+newUser
+redirector = DynamicAPF
+resetter = APF
+pathseedChoice = RandomTurn
+max_trans_gain = 0
+min_trans_gain = 0
+max_rot_gain = 0
+min_rot_gain = 0
+curvature_radius = 6.3170314843499749067570787314607
+newUser
+newUser
+end
+
+trackingSpaceChoice = FilePath
+trackingSpaceFilePath = ./TrackingSpace/SquareWithObstacle.txt
+squareWidth = 10
+newUser
+redirector = DynamicAPF
+resetter = APF
+pathseedChoice = RandomTurn
+max_trans_gain = 0
+min_trans_gain = 0
+max_rot_gain = 0
+min_rot_gain = 0
+curvature_radius = 6.3170314843499749067570787314607
+newUser
+newUser
+end
+
+trackingSpaceChoice = FilePath
+trackingSpaceFilePath = ./TrackingSpace/SquareWithObstacle.txt
+squareWidth = 10
+newUser
+redirector = DynamicAPF
+resetter = APF
+pathseedChoice = RandomTurn
+max_trans_gain = 0
+min_trans_gain = 0
+max_rot_gain = 0
+min_rot_gain = 0
+curvature_radius = 6.3170314843499749067570787314607
+newUser
+newUser
+end
+
+trackingSpaceChoice = FilePath
+trackingSpaceFilePath = ./TrackingSpace/SquareWithObstacle.txt
+squareWidth = 10
+newUser
+redirector = DynamicAPF
+resetter = APF
+pathseedChoice = RandomTurn
+max_trans_gain = 0
+min_trans_gain = 0
+max_rot_gain = 0
+min_rot_gain = 0
+curvature_radius = 6.3170314843499749067570787314607
+newUser
+newUser
+end
+
+trackingSpaceChoice = FilePath
+trackingSpaceFilePath = ./TrackingSpace/SquareWithObstacle.txt
+squareWidth = 10
+newUser
+redirector = DynamicAPF
+resetter = APF
+pathseedChoice = RandomTurn
+max_trans_gain = 0
+min_trans_gain = 0
+max_rot_gain = 0
+min_rot_gain = 0
+curvature_radius = 6.3170314843499749067570787314607
+newUser
+newUser
+end
+
+trackingSpaceChoice = FilePath
+trackingSpaceFilePath = ./TrackingSpace/SquareWithObstacle.txt
+squareWidth = 10
+newUser
+redirector = DynamicAPF
+resetter = APF
+pathseedChoice = RandomTurn
+max_trans_gain = 0
+min_trans_gain = 0
+max_rot_gain = 0
+min_rot_gain = 0
+curvature_radius = 6.3170314843499749067570787314607
+newUser
+newUser
+end
+
+trackingSpaceChoice = FilePath
+trackingSpaceFilePath = ./TrackingSpace/SquareWithObstacle.txt
+squareWidth = 10
+newUser
+redirector = DynamicAPF
+resetter = APF
+pathseedChoice = RandomTurn
+max_trans_gain = 0
+min_trans_gain = 0
+max_rot_gain = 0
+min_rot_gain = 0
+curvature_radius = 6.3170314843499749067570787314607
+newUser
+newUser
+end
+
+trackingSpaceChoice = FilePath
+trackingSpaceFilePath = ./TrackingSpace/SquareWithObstacle.txt
+squareWidth = 10
+newUser
+redirector = DynamicAPF
+resetter = APF
+pathseedChoice = RandomTurn
+max_trans_gain = 0
+min_trans_gain = 0
+max_rot_gain = 0
+min_rot_gain = 0
+curvature_radius = 6.3170314843499749067570787314607
+newUser
+newUser
+end
+
+trackingSpaceChoice = FilePath
+trackingSpaceFilePath = ./TrackingSpace/SquareWithObstacle.txt
+squareWidth = 10
+newUser
+redirector = DynamicAPF
+resetter = APF
+pathseedChoice = RandomTurn
+max_trans_gain = 0
+min_trans_gain = 0
+max_rot_gain = 0
+min_rot_gain = 0
+curvature_radius = 6.3170314843499749067570787314607
+newUser
+newUser
+end
