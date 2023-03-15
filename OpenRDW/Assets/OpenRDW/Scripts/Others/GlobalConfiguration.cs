@@ -1373,6 +1373,12 @@ public class GlobalConfiguration : MonoBehaviour
                 TrackingSpaceGenerator.GenerateT_ShapeTrackingSpace(obstacleType, out trackingSpacePoints, out obstaclePolygons, out defaultInitialConfiguration);
                 break;
             case TrackingSpaceChoice.FilePath:
+                defaultInitialConfiguration = new List<InitialConfiguration> {
+                    new InitialConfiguration(new Vector2(2.5f, 0f), Vector2.right),
+                    new InitialConfiguration(new Vector2(-2.5f, 0f), Vector2.left),
+                    new InitialConfiguration(new Vector2(0f, 2.5f), Vector2.down),
+                    new InitialConfiguration(new Vector2(0f, -2.5f), Vector2.up)
+                };
                 TrackingSpaceGenerator.LoadTrackingSpacePointsFromFile(trackingSpaceFilePath, out trackingSpacePoints, out obstaclePolygons);
                 break;
             case TrackingSpaceChoice.Square://no obstacle in square
