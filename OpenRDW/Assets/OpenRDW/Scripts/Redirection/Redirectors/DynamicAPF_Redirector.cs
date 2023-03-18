@@ -15,7 +15,7 @@ public class DynamicAPF_Redirector : APF_Redirector
     private static readonly float lamda = 2.656f;
     private static readonly float gamma = 3.091f;
 
-    private const float CURVATURE_GAIN_CAP_DEGREES_PER_SECOND = 15;  // degrees per second
+    private const float CURVATURE_GAIN_CAP_DEGREES_PER_SECOND = float.PositiveInfinity;  // degrees per second
     private const float ROTATION_GAIN_CAP_DEGREES_PER_SECOND = 30;  // degrees per second
 
     //Unit: degree, the maximum steering value in the proximity based steering rate scaling policy

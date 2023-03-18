@@ -22,7 +22,7 @@ using VisibilityPolygonCSharp;
  */
 public class VisPoly_Redirector : APF_Redirector
 {
-    private const float CURVATURE_GAIN_CAP_DEGREES_PER_SECOND = 15;  // degrees per second
+    private const float CURVATURE_GAIN_CAP_DEGREES_PER_SECOND = float.PositiveInfinity;  // degrees per second
     private const float ROTATION_GAIN_CAP_DEGREES_PER_SECOND = 30;  // degrees per second
     private bool sliceVisible = false; // set selected virtual slice and physical slice visible
     private VisibilityPolygonCSharp<Vector2> VisibilityPolygon = new VisibilityPolygonCSharp<Vector2>(new Vector2Adapter());

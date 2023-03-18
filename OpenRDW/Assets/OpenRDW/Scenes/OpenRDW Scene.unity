@@ -597,7 +597,7 @@ MonoBehaviour:
   movementController: 1
   runInBackstage: 1
   loadFromTxt: 1
-  multiCmdFiles: 0
+  multiCmdFiles: 1
   useSimulationTime: 0
   overviewModeEveryTrial: 0
   firstPersonView: 0

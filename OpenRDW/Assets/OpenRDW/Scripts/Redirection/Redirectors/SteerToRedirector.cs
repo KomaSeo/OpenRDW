@@ -10,7 +10,7 @@ public abstract class SteerToRedirector : Redirector {
     // User Experience Improvement Parameters
     private const float MOVEMENT_THRESHOLD = 0.2f; // meters per second
     private const float ROTATION_THRESHOLD = 1.5f; // degrees per second
-    private const float CURVATURE_GAIN_CAP_DEGREES_PER_SECOND = 15;  // degrees per second
+    private const float CURVATURE_GAIN_CAP_DEGREES_PER_SECOND = float.PositiveInfinity;  // degrees per second
     private const float ROTATION_GAIN_CAP_DEGREES_PER_SECOND = 30;  // degrees per second
     private const float DISTANCE_THRESHOLD_FOR_DAMPENING = 1.25f; // Distance threshold to apply dampening (meters)
     private const float BEARING_THRESHOLD_FOR_DAMPENING = 45f; // Bearing threshold to apply dampening (degrees) MAHDI: WHERE DID THIS VALUE COME FROM?
